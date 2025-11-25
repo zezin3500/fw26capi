@@ -1,11 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Api Notícias</title>
+    <title>Documentação da API - Notícias</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .endpoint {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        pre {
+            background-color: #333;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 1rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
 </head>
 <body>
-    <h1>Bem vindo a API notícias</h1>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">API de Notícias</a>
+    </nav>
+
+    <div class="container mt-5">
+        <h1>Documentação da API</h1>
+        <p class="lead">API para gerenciamento de notícias armazenadas no MongoDB Atlas. A API oferece os seguintes recursos: buscar, inserir, apagar e atualizar notícias.</p>
+
+        <!-- Endpoints -->
+        <div class="endpoint">
+            <h3 class="h5">GET /noticias</h3>
+            <p>Retorna todas as notícias armazenadas no banco de dados MongoDB.</p>
+        </div>
+
+        <div class="endpoint">
+            <h3 class="h5">GET /noticias/id/:id</h3>
+            <p>Retorna uma notícia específica, utilizando o <code>:id</code> como parâmetro.</p>
+            <pre>Exemplo de uso: /noticias/id/12345</pre>
+        </div>
+
+        <div class="endpoint">
+            <h3 class="h5">GET /noticias/tiponoticia/:tipo</h3>
+            <p>Retorna notícias filtradas por tipo, onde <code>:tipo</code> pode ser algo como "esporte", "tecnologia", etc.</p>
+            <pre>Exemplo de uso: /noticias/tiponoticia/esporte</pre>
+        </div>
+
+        <div class="endpoint">
+            <h3 class="h5">POST /postnoticias</h3>
+            <p>Insere uma nova notícia no banco de dados. O corpo da requisição deve ser enviado em formato JSON.</p>
+            <pre>
+{
+    "titulo": "Título da Notícia",
+    "descricao": "Descrição detalhada da notícia",
+    "tipo": "tipo da notícia",
+    "data": "2025-11-25T00:00:00Z"
+}
+            </pre>
+        </div>
+
+        <div class="endpoint">
+            <h3 class="h5">DELETE /delnoticias</h3>
+            <p>Apaga uma notícia do banco de dados. O corpo da requisição deve ser enviado em formato JSON com o ID da notícia a ser excluída.</p>
+            <pre>
+{
+    "id": "12345"
+}
+            </pre>
+        </div>
+
+        <div class="endpoint">
+            <h3 class="h5">PUT /putnoticias</h3>
+            <p>Atualiza uma notícia existente. O corpo da requisição deve ser enviado em formato JSON com as informações atualizadas.</p>
+            <pre>
+{
+    "id": "12345",
+    "titulo": "Novo título da Notícia",
+    "descricao": "Nova descrição",
+    "tipo": "novo tipo",
+    "data": "2025-11-26T00:00:00Z"
+}
+            </pre>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2025 API de Notícias - Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
